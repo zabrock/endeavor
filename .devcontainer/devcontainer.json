@@ -1,0 +1,21 @@
+{
+  "name": "endeavor-devcontainer",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  },
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "forwardPorts": [],
+  "postCreateCommand": "python3 -m pip --version || true",
+  "remoteUser": "vscode"
+}
