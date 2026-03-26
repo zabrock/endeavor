@@ -5,12 +5,13 @@
   "main": "dist/main/electronMain.js",
   "scripts": {
     "build": "tsc -p .",
+    "build:watch": "tsc --watch",
     "test": "node run-tests.js",
     "ui:dev": "vite --config ./vite.config.ts",
     "ui:build": "vite build --config ./vite.config.ts",
-    "electron:dev": "NODE_ENV=development electron .",
-    "dev": "concurrently \"npm:ui:dev\" \"npm:electron:dev\"",
-    "start": "npm run build && npm run ui:build && electron ."
+    "electron:dev": "env -u DBUS_SESSION_BUS_ADDRESS -u DBUS_SYSTEM_BUS_ADDRESS NODE_ENV=development xvfb-run -a electron . --no-sandbox --disable-gpu --disable-features=UsePortal",
+    "dev": "concurrently \"npm run build:watch\" \"npm:ui:dev\" \"npm:electron:dev\"",
+    "start": "npm run build && npm run ui:build && env -u DBUS_SESSION_BUS_ADDRESS -u DBUS_SYSTEM_BUS_ADDRESS xvfb-run -a electron . --no-sandbox --disable-gpu --disable-features=UsePortal"
   },
   "dependencies": {
     "react": "^18.2.0",

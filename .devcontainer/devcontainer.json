@@ -3,6 +3,10 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
+  "containerEnv": {
+    "npm_config_platform": "linux",
+    "npm_config_arch": "x64"
+  },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -16,6 +20,6 @@
     "terminal.integrated.shell.linux": "/bin/bash"
   },
   "forwardPorts": [],
-  "postCreateCommand": "python3 -m pip --version || true",
+  "postCreateCommand": "npm install",
   "remoteUser": "vscode"
 }
